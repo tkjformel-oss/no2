@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peraturan Kelas 11 TKJ</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #5bb0f6 0%, #ffffff 100%);
+  color: #001f4d;
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: float-particle 15s infinite;
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+.tkj-decor {
+  position: fixed;
+  opacity: 0.15;
+  animation: float 10s infinite ease-in-out alternate;
+  z-index: 0;
+  filter: drop-shadow(0 0 10px rgba(91, 176, 246, 0.3));
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-30px) rotate(10deg); 
+  }
+}
+
+.router { top: 10%; left: 10%; width: 70px; animation-delay: 0s; }
+.cpu { top: 60%; left: 80%; width: 70px; animation-delay: 2s; }
+.chip { top: 30%; left: 75%; width: 60px; animation-delay: 4s; }
+.gear { top: 75%; left: 15%; width: 80px; animation-delay: 1s; }
+.lan { top: 45%; left: 5%; width: 60px; animation-delay: 3s; }
+
+.navbar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  box-shadow: 0 4px 20px rgba(91, 176, 246, 0.1);
+}
+
+.navbar .logo {
+  width: 65px;
+  height: 65px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: white;
+  object-fit: cover;
+  box-shadow: 0 5px 20px rgba(91, 176, 246, 0.3);
+  transition: transform 0.3s;
+}
+
+.navbar .logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.navbar .menu {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar .menu a {
+  text-decoration: none;
+  color: #001f4d;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar .menu a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.navbar .menu a:hover:before {
+  left: 100%;
+}
+
+.navbar .menu a:hover {
+  background: #ffc107;
+  color: #001f4d;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+.navbar .menu a:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger div {
+  width: 28px;
+  height: 3px;
+  background: #001f4d;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.hamburger:hover div {
+  background: #ffc107;
+}
+
+.section {
+  max-width: 900px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.35);
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  padding: 50px 60px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 15px 50px rgba(0, 31, 77, 0.1);
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section h2 {
+  margin-bottom: 50px;
+  color: #001f4d;
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 800;
+  text-shadow: 0 3px 10px rgba(91, 176, 246, 0.2);
+  background: linear-gradient(135deg, #001f4d 0%, #5bb0f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.peraturan-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.peraturan-item {
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  padding: 18px 22px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0 8px 25px rgba(91, 176, 246, 0.15);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  overflow: hidden;
+  animation: slideIn 0.6s ease-out backwards;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.peraturan-item:nth-child(1) { animation-delay: 0.1s; }
+.peraturan-item:nth-child(2) { animation-delay: 0.2s; }
+.peraturan-item:nth-child(3) { animation-delay: 0.3s; }
+.peraturan-item:nth-child(4) { animation-delay: 0.4s; }
+.peraturan-item:nth-child(5) { animation-delay: 0.5s; }
+.peraturan-item:nth-child(6) { animation-delay: 0.6s; }
+.peraturan-item:nth-child(7) { animation-delay: 0.7s; }
+.peraturan-item:nth-child(8) { animation-delay: 0.8s; }
+
+.peraturan-item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(91, 176, 246, 0.2), transparent);
+  transition: left 0.6s;
+}
+
+.peraturan-item:hover:before {
+  left: 100%;
+}
+
+.peraturan-item:hover {
+  transform: translateX(10px) scale(1.02);
+  box-shadow: 0 12px 35px rgba(91, 176, 246, 0.25);
+  border-color: #ffc107;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.peraturan-item:active {
+  transform: translateX(5px) scale(1.01);
+}
+
+.icon-box {
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #5bb0f6 0%, #4a9de8 100%);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8em;
+  box-shadow: 0 5px 20px rgba(91, 176, 246, 0.3);
+  transition: all 0.3s;
+}
+
+.peraturan-item:hover .icon-box {
+  transform: rotate(10deg) scale(1.1);
+  background: linear-gradient(135deg, #ffc107 0%, #ffda47 100%);
+  box-shadow: 0 8px 30px rgba(255, 193, 7, 0.4);
+}
+
+.peraturan-item span {
+  color: #001f4d;
+  font-weight: 600;
+  font-size: 1.05em;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.number {
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 193, 7, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9em;
+  color: #001f4d;
+}
+
+/* Responsive untuk HP */
+@media (max-width: 768px) {
+  body {
+    padding-top: 90px;
+  }
+
+  .navbar {
+    padding: 10px 20px;
+  }
+  
+  .navbar .logo {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .navbar .menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 75px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 31, 77, 0.2);
+    backdrop-filter: blur(20px);
+    min-width: 180px;
+  }
+  
+  .navbar .menu.active {
+    display: flex;
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .section {
+    padding: 30px 20px;
+    margin: 20px 15px;
+    border-radius: 25px;
+  }
+  
+  .section h2 {
+    font-size: 1.8em;
+    margin-bottom: 35px;
+  }
+  
+  .peraturan-list {
+    gap: 15px;
+  }
+
+  .peraturan-item {
+    padding: 16px 18px;
+    gap: 15px;
+  }
+  
+  .icon-box {
+    width: 55px;
+    height: 55px;
+    font-size: 1.6em;
+  }
+  
+  .peraturan-item span {
+    font-size: 0.95em;
+  }
+
+  .number {
+    width: 28px;
+    height: 28px;
+    font-size: 0.85em;
+  }
+
+  .tkj-decor {
+    width: 50px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 25px 15px;
+    margin: 15px 10px;
+  }
+
+  .section h2 {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+
+  .peraturan-list {
+    gap: 12px;
+  }
+  
+  .peraturan-item {
+    flex-direction: column;
+    text-align: center;
+    padding: 18px 15px;
+    gap: 12px;
+    border-radius: 18px;
+  }
+
+  .icon-box {
+    width: 60px;
+    height: 60px;
+    font-size: 1.7em;
+  }
+
+  .peraturan-item span {
+    font-size: 0.9em;
+  }
+
+  .number {
+    left: 12px;
+    top: 12px;
+    width: 26px;
+    height: 26px;
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 360px) {
+  .section h2 {
+    font-size: 1.3em;
+  }
+
+  .peraturan-item {
+    padding: 15px 12px;
+  }
+
+  .icon-box {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5em;
+  }
+
+  .peraturan-item span {
+    font-size: 0.85em;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<svg class="tkj-decor router" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#001f4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2 17L12 22L22 17" stroke="#001f4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2 12L12 17L22 12" stroke="#001f4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="tkj-decor cpu" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="9" y="9" width="6" height="6" stroke="#001f4d" stroke-width="2"/>
+  <path d="M9 1V6M15 1V6M9 18V23M15 18V23M1 9H6M1 15H6M18 9H23M18 15H23" stroke="#001f4d" stroke-width="2"/>
+</svg>
+
+<svg class="tkj-decor chip" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="5" y="5" width="14" height="14" rx="2" stroke="#001f4d" stroke-width="2"/>
+  <circle cx="12" cy="12" r="3" stroke="#001f4d" stroke-width="2"/>
+</svg>
+
+<svg class="tkj-decor gear" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="3" stroke="#001f4d" stroke-width="2"/>
+  <path d="M12 1V4M12 20V23M23 12H20M4 12H1M20.49 20.49L18.36 18.36M5.64 5.64L3.51 3.51M20.49 3.51L18.36 5.64M5.64 18.36L3.51 20.49" stroke="#001f4d" stroke-width="2"/>
+</svg>
+
+<svg class="tkj-decor lan" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="10" stroke="#001f4d" stroke-width="2"/>
+  <path d="M2 12H22M12 2C14.5 4.5 16 8 16 12C16 16 14.5 19.5 12 22M12 2C9.5 4.5 8 8 8 12C8 16 9.5 19.5 12 22" stroke="#001f4d" stroke-width="2"/>
+</svg>
+
+<div class="navbar">
+  <img src="logo_tkj-removebg-preview.png" class="logo" alt="Logo TKJ">
+  <div class="menu">
+    <a href="guru.html">Guru</a>
+    <a href="murid.html">Murid</a>
+    <a href="struktur.html">Struktur</a>
+    <a href="peraturan.html">Peraturan</a>
+    <a href="galeri.html">Galeri</a>
+    <a href="kontak.html">Kontak</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Peraturan Kelas 11 TKJ</h2>
+  <div class="peraturan-list">
+    <div class="peraturan-item">
+      <div class="number">1</div>
+      <div class="icon-box">⏰</div>
+      <span>Datang tepat waktu setiap hari dan tidak terlambat</span>
+    </div>
+    
+    <div class="peraturan-item">
+      <div class="number">2</div>
+      <div class="icon-box">📚</div>
+      <span>Mengikuti pelajaran dengan serius dan penuh perhatian</span>
+    </div>
+    
+    <div class="peraturan-item">
+      <div class="number">3</div>
+      <div class="icon-box">🧹</div>
+      <span>Menjaga kebersihan kelas dan lingkungan sekolah</span>
+    </div>
+    
+    <div class="peraturan-item">
+      <div class="number">4</div>
+      <div class="icon-box">🤝</div>
+      <span>Hormati guru, teman, dan seluruh staf sekolah</span>
+    </div>
+    
+    <div class="peraturan-item">
+      <div class="number">5</div>
+      <div class="icon-box">💻</div>
+      <span>Menggunakan perangkat komputer sesuai aturan yang berlaku</span>
+    </div>
+    
+    <div class="peraturan-item">
+      <div class="number">6</div>
+      <div class="icon-box">🚫</div>
+      <span>Tidak merusak atau mengambil barang milik orang lain</span>
+    </div>
+    
+    <div class="peraturan-item">
+      <div class="number">7</div>
+      <div class="icon-box">👔</div>
+      <span>Berpakaian rapi dan sesuai dengan peraturan sekolah</span>
+    </div>
+    
+    <div class="peraturan-item">
+      <div class="number">8</div>
+      <div class="icon-box">🎯</div>
+      <span>Bertanggung jawab atas tugas dan kewajiban kelas</span>
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.querySelector('.navbar .menu');
+  menu.classList.toggle('active');
+}
+
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+  const particle = document.createElement('div');
+  particle.className = 'particle';
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.animationDelay = Math.random() * 15 + 's';
+  particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+  particlesContainer.appendChild(particle);
+}
+</script>
+
+</body>
+</html>

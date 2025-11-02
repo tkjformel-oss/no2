@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeri Kelas TKJ</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #5bb0f6 0%, #ffffff 100%);
+  color: #001f4d;
+  position: relative;
+  overflow-x: hidden;
+  padding-top: 100px;
+  padding-bottom: 50px;
+}
+
+.particles {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  top: 0;
+  left: 0;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  animation: float-particle 15s infinite;
+}
+
+@keyframes float-particle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% {
+    transform: translateY(-100vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+.tkj-decor {
+  position: fixed;
+  opacity: 0.15;
+  animation: float 10s infinite ease-in-out alternate;
+  z-index: 0;
+  filter: drop-shadow(0 0 10px rgba(91, 176, 246, 0.3));
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg); 
+  }
+  50% { 
+    transform: translateY(-30px) rotate(10deg); 
+  }
+}
+
+.router { top: 10%; left: 10%; width: 70px; animation-delay: 0s; }
+.cpu { top: 60%; left: 80%; width: 70px; animation-delay: 2s; }
+.chip { top: 30%; left: 75%; width: 60px; animation-delay: 4s; }
+.gear { top: 75%; left: 15%; width: 80px; animation-delay: 1s; }
+.lan { top: 45%; left: 5%; width: 60px; animation-delay: 3s; }
+
+.navbar {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.25);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  box-shadow: 0 4px 20px rgba(91, 176, 246, 0.1);
+}
+
+.navbar .logo {
+  width: 65px;
+  height: 65px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: white;
+  object-fit: cover;
+  box-shadow: 0 5px 20px rgba(91, 176, 246, 0.3);
+  transition: transform 0.3s;
+}
+
+.navbar .logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.navbar .menu {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar .menu a {
+  text-decoration: none;
+  color: #001f4d;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 25px;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.navbar .menu a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 193, 7, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.navbar .menu a:hover:before {
+  left: 100%;
+}
+
+.navbar .menu a:hover {
+  background: #ffc107;
+  color: #001f4d;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+.navbar .menu a:active {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.hamburger div {
+  width: 28px;
+  height: 3px;
+  background: #001f4d;
+  border-radius: 3px;
+  transition: all 0.3s;
+}
+
+.hamburger:hover div {
+  background: #ffc107;
+}
+
+.section {
+  max-width: 1200px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.35);
+  border: 3px solid rgba(255, 255, 255, 0.5);
+  border-radius: 30px;
+  padding: 50px 60px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 15px 50px rgba(0, 31, 77, 0.1);
+  position: relative;
+  z-index: 2;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section h2 {
+  margin-bottom: 50px;
+  color: #001f4d;
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 800;
+  text-shadow: 0 3px 10px rgba(91, 176, 246, 0.2);
+  background: linear-gradient(135deg, #001f4d 0%, #5bb0f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.carousel-container {
+  margin-bottom: 50px;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  overflow: hidden;
+  border-radius: 25px;
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 10px 40px rgba(0, 31, 77, 0.2);
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.slides img {
+  width: 100%;
+  height: 500px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: #001f4d;
+  font-size: 24px;
+  padding: 15px 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s;
+  z-index: 10;
+  font-weight: 700;
+}
+
+.prev:hover, .next:hover {
+  background: #ffc107;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 8px 25px rgba(255, 193, 7, 0.4);
+}
+
+.prev:active, .next:active {
+  transform: translateY(-50%) scale(1.05);
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.dots {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: #ffc107;
+  border-color: #ffc107;
+  transform: scale(1.3);
+}
+
+.dot:hover {
+  background: #5bb0f6;
+  transform: scale(1.2);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 1.8em;
+  font-weight: 700;
+  color: #001f4d;
+  margin-bottom: 30px;
+  opacity: 0.9;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.gallery-item {
+  border: 3px solid rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 25px rgba(91, 176, 246, 0.15);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: zoomIn 0.6s ease-out backwards;
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.gallery-item:nth-child(1) { animation-delay: 0.1s; }
+.gallery-item:nth-child(2) { animation-delay: 0.15s; }
+.gallery-item:nth-child(3) { animation-delay: 0.2s; }
+.gallery-item:nth-child(4) { animation-delay: 0.25s; }
+.gallery-item:nth-child(5) { animation-delay: 0.3s; }
+.gallery-item:nth-child(6) { animation-delay: 0.35s; }
+.gallery-item:nth-child(7) { animation-delay: 0.4s; }
+.gallery-item:nth-child(8) { animation-delay: 0.45s; }
+
+.gallery-item:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 40px rgba(91, 176, 246, 0.3);
+  border-color: #ffc107;
+}
+
+.gallery-item:active {
+  transform: translateY(-5px) scale(1.02);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.4s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Responsive untuk HP */
+@media (max-width: 768px) {
+  body {
+    padding-top: 90px;
+  }
+
+  .navbar {
+    padding: 10px 20px;
+  }
+  
+  .navbar .logo {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .navbar .menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    position: absolute;
+    top: 75px;
+    right: 20px;
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 31, 77, 0.2);
+    backdrop-filter: blur(20px);
+    min-width: 180px;
+  }
+  
+  .navbar .menu.active {
+    display: flex;
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .hamburger {
+    display: flex;
+  }
+  
+  .section {
+    padding: 30px 20px;
+    margin: 20px 15px;
+    border-radius: 25px;
+  }
+  
+  .section h2 {
+    font-size: 1.8em;
+    margin-bottom: 30px;
+  }
+  
+  .slides img {
+    height: 300px;
+  }
+  
+  .prev, .next {
+    font-size: 20px;
+    padding: 12px 16px;
+  }
+  
+  .prev { left: 10px; }
+  .next { right: 10px; }
+  
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+  
+  .gallery-item img {
+    height: 150px;
+  }
+
+  .section-title {
+    font-size: 1.4em;
+  }
+
+  .carousel {
+    border-radius: 20px;
+  }
+
+  .tkj-decor {
+    width: 50px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 25px 15px;
+    margin: 15px 10px;
+  }
+
+  .section h2 {
+    font-size: 1.5em;
+    margin-bottom: 25px;
+  }
+  
+  .slides img {
+    height: 250px;
+  }
+
+  .prev, .next {
+    font-size: 18px;
+    padding: 10px 14px;
+  }
+  
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+  }
+
+  .gallery-item {
+    border-radius: 15px;
+  }
+
+  .gallery-item img {
+    height: 130px;
+  }
+
+  .section-title {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+
+  .carousel {
+    border-radius: 15px;
+    border-width: 2px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+  }
+
+  .carousel-container {
+    margin-bottom: 35px;
+  }
+}
+
+@media (max-width: 360px) {
+  .section h2 {
+    font-size: 1.3em;
+  }
+
+  .slides img {
+    height: 220px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 10px;
+  }
+
+  .gallery-item img {
+    height: 110px;
+  }
+
+  .prev, .next {
+    font-size: 16px;
+    padding: 8px 12px;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+
+<svg class="tkj-decor router" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="#001f4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2 17L12 22L22 17" stroke="#001f4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M2 12L12 17L22 12" stroke="#001f4d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+<svg class="tkj-decor cpu" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="9" y="9" width="6" height="6" stroke="#001f4d" stroke-width="2"/>
+  <path d="M9 1V6M15 1V6M9 18V23M15 18V23M1 9H6M1 15H6M18 9H23M18 15H23" stroke="#001f4d" stroke-width="2"/>
+</svg>
+
+<svg class="tkj-decor chip" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="5" y="5" width="14" height="14" rx="2" stroke="#001f4d" stroke-width="2"/>
+  <circle cx="12" cy="12" r="3" stroke="#001f4d" stroke-width="2"/>
+</svg>
+
+<svg class="tkj-decor gear" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="3" stroke="#001f4d" stroke-width="2"/>
+  <path d="M12 1V4M12 20V23M23 12H20M4 12H1M20.49 20.49L18.36 18.36M5.64 5.64L3.51 3.51M20.49 3.51L18.36 5.64M5.64 18.36L3.51 20.49" stroke="#001f4d" stroke-width="2"/>
+</svg>
+
+<svg class="tkj-decor lan" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="10" stroke="#001f4d" stroke-width="2"/>
+  <path d="M2 12H22M12 2C14.5 4.5 16 8 16 12C16 16 14.5 19.5 12 22M12 2C9.5 4.5 8 8 8 12C8 16 9.5 19.5 12 22" stroke="#001f4d" stroke-width="2"/>
+</svg>
+
+<div class="navbar">
+  <img src="logo_tkj-removebg-preview.png" class="logo" alt="Logo TKJ">
+  <div class="menu">
+    <a href="guru.html">Guru</a>
+    <a href="murid.html">Murid</a>
+    <a href="struktur.html">Struktur</a>
+    <a href="peraturan.html">Peraturan</a>
+    <a href="galeri.html">Galeri</a>
+    <a href="kontak.html">Kontak</a>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>📸 Galeri Kelas TKJ</h2>
+  
+  <div class="carousel-container">
+    <h3 class="section-title">🎬 Kegiatan Kelas</h3>
+    <div class="carousel">
+      <div class="slides" id="slides">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=1200&h=600&fit=crop" alt="Kegiatan 1">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&h=600&fit=crop" alt="Kegiatan 2">
+        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=1200&h=600&fit=crop" alt="Kegiatan 3">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=600&fit=crop" alt="Kegiatan 4">
+      </div>
+      <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+      <button class="next" onclick="moveSlide(1)">&#10095;</button>
+    </div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <h3 class="section-title">🖼️ Foto Lainnya</h3>
+  <div class="gallery">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&h=300&fit=crop" alt="TKJ 1">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop" alt="TKJ 2">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?w=400&h=300&fit=crop" alt="TKJ 3">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=400&h=300&fit=crop" alt="TKJ 4">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop" alt="TKJ 5">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop" alt="TKJ 6">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&h=300&fit=crop" alt="TKJ 7">
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&h=300&fit=crop" alt="TKJ 8">
+    </div>
+  </div>
+</div>
+
+<script>
+function toggleMenu() {
+  const menu = document.querySelector('.navbar .menu');
+  menu.classList.toggle('active');
+}
+
+let slideIndex = 0;
+const slides = document.querySelector('#slides');
+const totalSlides = slides.children.length;
+const dotsContainer = document.getElementById('dots');
+
+for (let i = 0; i < totalSlides; i++) {
+  const dot = document.createElement('span');
+  dot.className = 'dot';
+  dot.onclick = () => currentSlide(i);
+  dotsContainer.appendChild(dot);
+}
+
+function moveSlide(n) {
+  slideIndex += n;
+  if (slideIndex >= totalSlides) slideIndex = 0;
+  if (slideIndex < 0) slideIndex = totalSlides - 1;
+  updateSlide();
+}
+
+function currentSlide(n) {
+  slideIndex = n;
+  updateSlide();
+}
+
+function updateSlide() {
+  slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+  
+  const dots = document.querySelectorAll('.dot');
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === slideIndex);
+  });
+}
+
+setInterval(() => moveSlide(1), 5000);
+
+updateSlide();
+
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 30; i++) {
+  const particle = document.createElement('div');
+  particle.className = 'particle';
+  particle.style.left = Math.random() * 100 + '%';
+  particle.style.animationDelay = Math.random() * 15 + 's';
+  particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+  particlesContainer.appendChild(particle);
+}
+</script>
+
+</body>
+</html>
